@@ -1,22 +1,199 @@
 <!DOCTYPE>
 <html>
 <head>
-  <title>Cog.io</title>
-  <script
-          src="https://code.jquery.com/jquery-3.1.1.js"
-          integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-          crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./../javascripts/index.js"></script>
-  <link href="./../stylesheets/style.css" rel="stylesheet">
-  <style>
+    <title>Cog.io</title>
 
-  </style>
+    <!--Jquery-->
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.js"
+    integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+    crossorigin="anonymous"></script>
+    <!--Main Javscript-->
+    <script type="text/javascript" src="./../javascripts/index.js"></script>
+    <!--Main CSS-->
+<!--    <link href="./../stylesheets/style.css" rel="stylesheet">-->
+    <!--Main font-->
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,400,700" rel="stylesheet">
+    <!--XEicon-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
+
+    
+    <style>
+        *{
+            margin: 0 auto;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 400;
+        }
+        body{
+            background: #eaeaea;
+        }
+        header{
+            padding: 20px;
+            padding-left: 100px;
+            background: white;
+            color: #555
+        }
+        #main{
+            background-image: url('images/main.jpg');
+            padding: 100px;
+            color: white;
+        }
+        #contents{
+            
+        }
+        .card{
+            margin: 50px 30px;
+            padding: 50px;
+            background: white;
+            border-radius: 3px;
+            box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+            color: #555;
+        }
+        textarea{
+            width: 100%;
+            height: 100px;
+            background: #dddddd;
+            border: 0px;
+            color: gray;
+            border-radius: 3px;
+            font-size: 20px;
+            padding: 10px;
+        }
+        #startBtn{
+            text-align:center;
+            color: white;
+            transition: 0.3s;
+        }
+        #startBtn:hover{
+            color: gray;
+            transition: 0.3s;
+        }
+        .right{
+            float: right;
+        }
+        .left{
+            float: left;
+        }
+        .clear{
+            clear: both;
+        }
+        .btn{
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            padding: 10px 24px;
+        }
+        footer{
+            background: darkgray;
+            color: #666;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        
+        function scrollAnimation(id){
+            var position = $(id).offset(); // 위치값
+            $('html,body').animate({ scrollTop : position.top }, 500);
+        }
+        
+        $(document).ready(function(){
+            $('.card').hide();
+            $('#noti').hide();
+            
+            $('#startBtn').click(function(){
+                $('#section1').fadeIn('slow');
+                scrollAnimation('#section1');
+            });
+            $('#btnTranslate').click(function(){
+                if($('#txtInput').val() == ""){
+                    $('#noti').fadeIn('slow').delay(1200).fadeOut('slow')
+                }
+                else{
+                    $('#section2').fadeIn('slow');
+                    scrollAnimation('#section2');    
+                }
+                
+            });
+            $('#btnSentiment').click(function(){
+                $('#section3').fadeIn('slow');
+                scrollAnimation('#section3');
+            });
+        })
+    </script>
 </head>
 <body>
-    <textarea id="txtInput"></textarea>
-    <button id="btnTranslate">번역</button>
-    <textarea id="txtOutput" readonly></textarea>
-    <button id="btnSentiment">감정분석</button>
-    <textarea id="sentimentJsonOutput" readonly></textarea>
+    <header>
+        <img src="images/microsoftLogo.png" width="100px;">
+        <br>
+        <h2 style="margin-top: 5px;">Cog.io - Section 01</h2>
+    </header>
+    <div id="main">
+        <h1>Hello! Here is Cognitive API</h1>    
+        <p>Section 01</p>
+        <br>
+        <p>오늘은 Cognitive API를 이용해서 평점 분석기를 만들 것입니다.</p>
+        <p>이 강좌가 끝나면 당신도 손쉽게 언어 분석을 시작할 수 있을겁니다.</p>
+        <br>
+        <p>자, 그럼 이제 같이 시작해 볼까요?</p>
+        <br>
+        <br>
+        <div href="#section1" id="startBtn" >
+            <h3>시작하기</h3>
+            <br>
+            <h1 ><i class="xi-angle-down"></i></h1>
+        </div>
+    </div>
+    <div id="contents">
+        <div id="section1" class="card">
+            <h1><i class="xi-translate"></i> 번역하기</h1>
+            <br>
+            <p>한글로 된 평점을 분석하려면 번역의 과정이 필요합니다.</p>
+            <p>아쉽게도 Cognitive API는 아직 한글은 지원하지 않고 있기 때문이죠.</p>
+            <br>
+            <p>바로 여기 밑에 한번 한글로 평점을 입력해 볼까요?</p>
+            <br>
+            <textarea id="txtInput" placeholder="Input your comments"></textarea>
+            <p id="noti" style="text-align:right; color: dd6666">값을 입력해 주세요</p>
+            <br>
+            <br>
+            <div id="btnTranslate" class="right btn">확인</div>
+            <div class="clear"></div>
+
+        </div>
+        <div id="section2" class="card">
+            <h1><i class="xi-emoticon-happy-o"></i> 분석하기</h1>
+            <br>
+            <p>참 잘했습니다!</p>
+            <p>이제 한글로 된 평점에서 영어로 된 평점을 Bing Translate API를 통해 얻어냈어요.</p>
+            <p>완벽하게 모든 문법이 맞진 않겠지만, 그래도 아예 못 읽을 수준은 아닐거에요</p>
+            <br>
+            <p>제대로 번역이 이루어졌는지 확인하고, 이제 분석으로 넘어가 볼까요?</p>
+            <br>
+            <textarea id="txtOutput" readonly></textarea>
+            <br>
+            <br>
+            <div id="btnSentiment" class="right btn">확인</div>
+            <div class="clear"></div>
+        </div>
+        
+        <div id="section3" class="card">
+            <h1><i class="xi-document"></i> 결과보기</h1>
+            <br>
+            <p>아주 훌륭해요!</p>
+            <p>Cognitive API를 이용해서 영어로 된 평점 분석을 완료했어요!</p>
+            <p>아래 TextArea에는 Json 형태의 텍스트가 출력될 거에요 한번 확인해볼까요?</p>
+            <br>
+            <textarea id="sentimentJsonOutput" readonly></textarea>
+            <br>
+            <div class="clear"></div>
+        </div>
+        
+    </div>
+    
+    
+    
+    <footer>
+        <h3>Microsoft Student Partners</h3>
+        <h4>Kim Hose & Na Yunhwan</h4>
+    </footer>
 </body>
 </html>
