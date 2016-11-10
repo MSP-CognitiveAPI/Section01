@@ -1,0 +1,11 @@
+textarea{
+  display: block;
+  width: 600px;
+  height: 100px;
+}
+
+button {
+  width: 600px;
+  height: 40px;
+  margin: 10px 0;
+}
