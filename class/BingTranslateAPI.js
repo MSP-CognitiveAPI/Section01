@@ -31,11 +31,8 @@ var MsTranslator = require('mstranslator');
             text: text,
             to: 'en'
         };
-
         client.translate(params, function(err, data) {
             callback(data);
         });
     };
-
-
 }(this));
