@@ -49,7 +49,7 @@
             box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
             color: #555;
         }
-        textarea{
+        textarea, #sentimentJsonOutput{
             width: 100%;
             height: 100px;
             background: #dddddd;
@@ -87,38 +87,11 @@
             color: #666;
             padding: 20px;
         }
-    </style>
-    <script>
-        
-        function scrollAnimation(id){
-            var position = $(id).offset(); // 위치값
-            $('html,body').animate({ scrollTop : position.top }, 500);
+        #section4 img {
+            width: 120px;
+            border-radius: 3px;
         }
-        
-        $(document).ready(function(){
-            $('.card').hide();
-            $('#noti').hide();
-            
-            $('#startBtn').click(function(){
-                $('#section1').fadeIn('slow');
-                scrollAnimation('#section1');
-            });
-            $('#btnTranslate').click(function(){
-                if($('#txtInput').val() == ""){
-                    $('#noti').fadeIn('slow').delay(1200).fadeOut('slow')
-                }
-                else{
-                    $('#section2').fadeIn('slow');
-                    scrollAnimation('#section2');    
-                }
-                
-            });
-            $('#btnSentiment').click(function(){
-                $('#section3').fadeIn('slow');
-                scrollAnimation('#section3');
-            });
-        })
-    </script>
+    </style>
 </head>
 <body>
     <header>
@@ -183,6 +156,23 @@
             <p>아래 TextArea에는 Json 형태의 텍스트가 출력될 거에요 한번 확인해볼까요?</p>
             <br>
             <textarea id="sentimentJsonOutput" readonly></textarea>
+            <br>
+            <br>
+            <div id="btnCompare" class="right btn">비교</div>
+            <div class="clear"></div>
+        </div>
+        <div id="section4" class="card">
+            <h1><i class="xi-document"></i> 별점 비교</h1>
+            <br>
+            <p>별점을 확인해 볼까요?</p>
+            <p>Cognitive API를 이용해서 텍스트의 별점이 아래와 같이 출력되었습니다.</p>
+            <br>
+            <div id="sentimentJsonOutput" readonly>
+                <img src="" alt="결과 확인" id="sentiment_img"/>
+                <br>
+                <span id="inputText"></span>
+
+            </div>
             <br>
             <div class="clear"></div>
         </div>
